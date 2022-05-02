@@ -21,4 +21,4 @@ optional arguments:
 </pre>
 
 # PoC
-![alt text](https://github.com/abletsoff/icmp_chat/blob/main/PoC_2.png?raw=true)
+![PoC](https://github.com/abletsoff/icmp_chat/blob/main/PoC_2.png?raw=true)
