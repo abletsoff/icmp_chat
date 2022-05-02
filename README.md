@@ -20,5 +20,5 @@ optional arguments:
                         option while listening ECHO request
 </pre>
 
-# PoC
+# Example
 ![PoC](https://github.com/abletsoff/icmp_chat/blob/main/PoC_2.png?raw=true)
