@@ -1,5 +1,5 @@
 # icmp_chat
-Python script for transferring data by ICMP protocol
+Python implementation of the ICMP coverd communication
 
 # Functionality
 <pre> 
