@@ -5,9 +5,9 @@ import struct
 import logging
 import argparse
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
-IPv4_REGEX = re.compile(r'^([1-2]?\d{1,2}\.){3}'
-                        r'[1-2]?\d{1,2}$')
+logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(asctime)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S')
+IPv4_REGEX = re.compile(r'^([1-2]?\d{1,2}\.){3}[1-2]?\d{1,2}$')
 
 class ICMP:
 
@@ -19,8 +19,8 @@ class ICMP:
             try:
                 socket.gethostbyname(host)
                 return True
-            except Exception as excp:
-                print(excp)
+            except socket.gaierror as excp:
+                logging.warning(f"Domain name '{host}' does not known")
                 return False
 
     def __init__(self, type, opcode, payload=b'Hello friend:)', listen_all_icmp=False):
@@ -83,7 +83,7 @@ class ICMP:
         if ICMP.check_ip(host):
             port_num = 1 # does not matter for ICMP
             self.sock.sendto(self.header + self.payload, (host, port_num))
-            logging.info(f'Sending {len(self.payload)} byte(s) to {host}')
+            logging.info(f"Sending {len(self.payload)} byte(s) to '{host}'")
 
     def recive(self, address, file): 
        
